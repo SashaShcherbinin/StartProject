@@ -12,11 +12,12 @@
 
         <action
             android:id="@+id/action_to_main"
-            app:destination="@id/mainFragment" />
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.start.presentation.feature.main.MainFragment"
-        tools:layout="@layout/main_fragment">
-    </fragment>
+        tools:layout="@layout/main_fragment" />
 </navigation>

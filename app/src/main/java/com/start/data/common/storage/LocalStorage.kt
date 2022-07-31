@@ -6,7 +6,7 @@ import androidx.collection.LruCache
 import com.start.data.common.cashe.CacheFactory
 import com.start.data.common.cashe.CachePolicy
 import com.start.data.common.cashe.CachedEntry
-import kotlinx.coroutines.channels.BroadcastChannel
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import timber.log.Timber
 
@@ -18,7 +18,7 @@ class LocalStorage<K : Any, E> constructor(
     private val dataBase: DataBase<K, E>? = null
 ) {
 
-    private val updateChannel = BroadcastChannel<Unit>(1)
+    private val updateChannel = Channel<Unit>(1)
     private val cache: LruCache<K, CachedEntry<E>> = CacheFactory.createLruCache(maxElements)
 
     @Suppress("OPT_IN_USAGE")
@@ -41,7 +41,7 @@ class LocalStorage<K : Any, E> constructor(
                 }
             }
         }
-        return merge(flowOf(Unit), updateChannel.asFlow())
+        return merge(flowOf(Unit), updateChannel.receiveAsFlow())
             .flatMapLatest { flow }
     }
 

@@ -5,7 +5,7 @@ package com.start.data.common.storage
 import android.content.Context
 import android.content.SharedPreferences
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.channels.BroadcastChannel
+import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.withContext
 import timber.log.Timber
@@ -13,7 +13,7 @@ import timber.log.Timber
 class PreferenceStorage(context: Context, name: String) {
 
     @Suppress("EXPERIMENTAL_API_USAGE")
-    private val updateChannel = BroadcastChannel<Unit>(1)
+    private val updateChannel = Channel<Unit>(1)
     private var preferences: SharedPreferences = context
         .getSharedPreferences(name, Context.MODE_PRIVATE)
 
@@ -35,7 +35,7 @@ class PreferenceStorage(context: Context, name: String) {
 
     @Suppress("EXPERIMENTAL_API_USAGE")
     fun <T> observe(actionGet: (SharedPreferences) -> T): Flow<T> =
-        merge(flowOf(Unit), updateChannel.asFlow())
+        merge(flowOf(Unit), updateChannel.receiveAsFlow())
             .map {
                 actionGet.invoke(preferences)
             }
