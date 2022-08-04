@@ -1,3 +1,5 @@
+@file:Suppress("unused")
+
 package com.start.presentation.binding
 
 import androidx.databinding.BindingAdapter

@@ -10,7 +10,12 @@ import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.*
 import timber.log.Timber
 
-@Suppress("unused", "EXPERIMENTAL_API_USAGE")
+/**
+ * Automatic caching values from network to memory and database(optional) by key ->value
+ * @param maxElements max elements after adding making clean up for the first element
+ * @param network network method request to get data from network
+ * @param dataBase data base interface to get, insert, or clean data from data base
+ * */
 class LocalStorage<K : Any, E> constructor(
     maxElements: Int,
     private val cachePolicy: CachePolicy,
