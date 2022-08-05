@@ -19,6 +19,7 @@
         <activity
             android:name="com.start.presentation.MainActivity"
             android:exported="true"
+            android:screenOrientation="fullSensor"
             android:theme="@style/Theme.QuizT">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -7,6 +7,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.start.presentation.common.ErrorHandler
+import com.start.presentation.common.EventStateFlow
 import com.start.presentation.entity.ContentError
 import e.palyvo.presentation.common.entity.ContentState
 import kotlinx.coroutines.CoroutineScope
@@ -18,8 +19,8 @@ import kotlinx.coroutines.launch
 abstract class BaseViewModel : ViewModel() {
 
     val theme = MutableStateFlow<Resources.Theme?>(null)
-    val showErrorEvent = Channel<ContentError>()
-    val messageEvent = Channel<String>()
+    val showErrorEvent = EventStateFlow<ContentError>()
+    val messageEvent = EventStateFlow<String>()
     val uploadingState = MutableStateFlow(false)
     val contentState = MutableStateFlow(ContentState.LOADING)
 
@@ -56,7 +57,7 @@ abstract class BaseViewModel : ViewModel() {
                     viewError
                         .takeIf { handled.not() }
                         ?.let {
-                            showErrorEvent.trySend(it)
+                            showErrorEvent.sendValue(it)
                         }
                 }
             } finally {

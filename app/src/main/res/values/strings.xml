@@ -6,4 +6,5 @@
     <string name="general_error_unknownError">Unknown Error</string>
     <string name="general_error_serverError">Server error</string>
     <string name="general_error_networkConnection">Check your network connection</string>
+    <string name="main_button_openSomething">Open Something</string>
 </resources>

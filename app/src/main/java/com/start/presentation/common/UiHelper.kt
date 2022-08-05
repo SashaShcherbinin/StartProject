@@ -51,9 +51,10 @@ constructor(private val context: Activity) {
 
     private fun showUploading() {
         if (uploadingDialog == null) {
-            uploadingDialog = MaterialAlertDialogBuilder(
-                context,
-            ).show()
+            uploadingDialog = MaterialAlertDialogBuilder(context)
+                .setView(R.layout.view_loading_dialog)
+                .show()
+            uploadingDialog!!.window!!.setBackgroundDrawableResource(android.R.color.transparent)
             uploadingDialog!!.setCancelable(false)
         } else {
             uploadingDialog!!.show()

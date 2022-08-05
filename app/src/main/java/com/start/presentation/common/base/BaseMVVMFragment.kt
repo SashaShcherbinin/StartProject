@@ -8,7 +8,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.lifecycleScope
 import com.start.presentation.common.UiHelper
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.consumeAsFlow
 import kotlin.reflect.KClass
 
 @Suppress("MemberVisibilityCanBePrivate")
@@ -31,23 +30,23 @@ abstract class BaseMVVMFragment<VM : BaseViewModel>(
     }
 
     private fun defaultObserve() {
-        viewModel.showErrorEvent.consumeAsFlow().connectContentState(this) { viewError ->
+        viewModel.showErrorEvent.observe(this) { viewError ->
             viewError.handleMessage(requireActivity(), messageHandler = {
                 uiHelper.showErrorToast(it)
             })
         }
-        viewModel.uploadingState.connectContentState(this) {
+        viewModel.uploadingState.observe(this) {
             uiHelper.showUploading(it)
         }
-        viewModel.messageEvent.consumeAsFlow().connectContentState(this) {
+        viewModel.messageEvent.observe(this) {
             uiHelper.showMessage(it)
         }
     }
 
 }
 
-fun <T> Flow<T>.connectContentState(fragment: BaseFragment, function: (T) -> Unit) {
+fun <T> Flow<T>.observe(fragment: BaseFragment, function: (T) -> Unit) {
     fragment.lifecycleScope.launchWhenCreated {
-        this@connectContentState.collect(function::invoke)
+        this@observe.collect(function::invoke)
     }
 }
