@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <com.start.presentation.widget.ErrorContainerView
+    <com.start.base.presentation.widget.ErrorContainerView
         android:id="@+id/errorContainerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

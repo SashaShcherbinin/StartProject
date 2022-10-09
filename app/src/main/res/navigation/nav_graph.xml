@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/splashFragment"
-        android:name="com.start.presentation.feature.splash.SplashFragment"
+        android:name="com.start.feature.splash.presentation.SplashFragment"
         tools:layout="@layout/splash_fragment">
 
         <action
@@ -18,6 +18,6 @@
     </fragment>
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.start.presentation.feature.main.MainFragment"
+        android:name="com.start.feature.main.presentation.MainFragment"
         tools:layout="@layout/main_fragment" />
 </navigation>

@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.start.presentation.MainApplication"
+        android:name="com.start.MainApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,7 +17,7 @@
         android:theme="@style/Theme.QuizT"
         tools:targetApi="31">
         <activity
-            android:name="com.start.presentation.MainActivity"
+            android:name="com.start.MainActivity"
             android:exported="true"
             android:screenOrientation="fullSensor"
             android:theme="@style/Theme.QuizT">

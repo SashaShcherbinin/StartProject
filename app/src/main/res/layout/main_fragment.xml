@@ -7,7 +7,7 @@
 
         <variable
             name="vm"
-            type="com.start.presentation.feature.main.MainViewModel" />
+            type="com.start.feature.main.presentation.MainViewModel" />
     </data>
 
     <LinearLayout
@@ -25,7 +25,7 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <com.start.presentation.widget.ContentStateLayout
+        <com.start.base.presentation.widget.ContentStateLayout
             bind_csl_contentState="@{vm.contentState}"
             bind_csl_onRetry="@{() -> vm.retry()}"
             android:layout_width="match_parent"
@@ -60,7 +60,7 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </com.start.presentation.widget.ContentStateLayout>
+        </com.start.base.presentation.widget.ContentStateLayout>
 
     </LinearLayout>
 </layout>

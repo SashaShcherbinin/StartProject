@@ -1,6 +1,7 @@
 package com.start.data.common.storage
 
-import com.start.data.common.cashe.CachePolicy
+import com.start.base.data.common.cashe.CachePolicy
+import com.start.base.data.common.storage.LocalStorage
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
